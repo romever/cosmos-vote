@@ -5,6 +5,7 @@ import { formatDistance } from 'date-fns';
 import { zhCN, enUS } from 'date-fns/locale';
 import { CHAIN_CONFIGS, ChainConfig } from '../config/chains';
 import { useTranslation } from 'react-i18next';
+import ChainSelector from './ChainSelector';
 
 declare global {
   interface Window extends KeplrWindow {}
@@ -339,25 +340,12 @@ const ProposalList: React.FC = () => {
         {/* 添加链选择器和钱包连接按钮 */}
         <div className="mb-8 flex flex-col items-center space-y-4">
           {/* 链选择器 */}
-          <div className="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-md overflow-x-auto max-w-full">
-            {CHAIN_CONFIGS.map((chain) => (
-              <button
-                key={chain.chainId}
-                onClick={() => setSelectedChain(chain)}
-                className={`px-4 py-2 rounded-lg transition-colors duration-200 flex-shrink-0
-                          ${selectedChain.chainId === chain.chainId 
-                            ? 'bg-indigo-600 text-white' 
-                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
-              >
-                {chain.displayName}
-                {chainAddresses[chain.chainId] && (
-                  <div className="text-xs mt-1 truncate w-32">
-                    {chainAddresses[chain.chainId].slice(0, 10)}...
-                  </div>
-                )}
-              </button>
-            ))}
-          </div>
+          <ChainSelector
+            chains={CHAIN_CONFIGS}
+            selectedChain={selectedChain}
+            onSelect={setSelectedChain}
+            chainAddresses={chainAddresses}
+          />
 
           {/* 钱包连接按钮 */}
           <button 
