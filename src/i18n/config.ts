@@ -47,6 +47,9 @@ const resources = {
         voteSuccess: 'Vote successful!',
         voteFailed: 'Vote failed: ',
         error: 'Error, please check console for details'
+      },
+      github: {
+        viewSource: 'View source code on GitHub'
       }
     }
   },
@@ -94,6 +97,9 @@ const resources = {
         voteSuccess: '投票成功！',
         voteFailed: '投票失败：',
         error: '投票失败，请查看控制台了解详情'
+      },
+      github: {
+        viewSource: '在 GitHub 上查看源码'
       }
     }
   }
